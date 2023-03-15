@@ -8,6 +8,7 @@ switch($uc){
     include('vues/accueil.php');
     break;
   case 'continent' :
+    
     break;
 }
 
