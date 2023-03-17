@@ -80,8 +80,15 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"> <i class="fa-regular fa-font-awesome"></i> Gestion des nationalités</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="listeNationalites.php">Liste des nationalités</a>
-          <a class="dropdown-item" href="formNationalite.php?action=Ajouter">Ajouter une nationalité</a>
+          <a class="dropdown-item" href="">Liste des nationalités</a>
+          <a class="dropdown-item" href="">Ajouter une nationalité</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"> <i class="fa fa-globe" aria-hidden="true"></i> Gestion des continents</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="index.php?uc=continents&action=list">Liste des continents</a>
+          <a class="dropdown-item" href="#">Ajouter un continent</a>
         </div>
       </li>
     </ul>
