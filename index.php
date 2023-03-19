@@ -1,7 +1,10 @@
-<?php session_start(); ?>
-<?php include "vues/header.php";
+<?php
+ob_start();
+session_start();
+include "vues/header.php";
 include "modeles/Continent.php";
 include "modeles/connexionPdo.php";
+include "vues/messagesFlash.php";
 
 $uc =empty($_GET['uc']) ?  "accueil" : $_GET['uc'];
 
