@@ -35,7 +35,7 @@ class Continent{
      */
     public function setNum(int $num) :self
     {
-        $this->$num;
+        $this->num=$num;
         return $this;
     }
 
