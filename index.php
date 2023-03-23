@@ -15,6 +15,9 @@ switch($uc){
   case 'continents' :
     include('controllers/continentController.php');
     break;
+  case 'nationalites' :
+    include('controllers/nationaliteController.php');
+    break;
 }
 
 include "vues/footer.php";?>

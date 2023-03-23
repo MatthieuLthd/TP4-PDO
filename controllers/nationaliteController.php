@@ -2,31 +2,31 @@
 $action=$_GET['action'];
 switch($action){
     case 'list' :
-        $lesContinents=Continent::findAll();
-        include('vues/Continent/listeContinents.php');
+        $lesNationalites=Continent::findAll();
+        include('vues/Nationalite/listeNationalite.php');
         break;
 
     case 'add' :
         $mode="Ajouter";
-        include ('vues/Continent/formContinent.php');
+        include ('vues/Nationalite/listeNationalite.php');
         break;
 
     case 'update' :
         $mode="Modifier";
         $continent=Continent::findById($_GET['num']);
-        include ('vues/Continent/formContinent.php');
+        include ('vues/Nationalite/listeNationalite.php');
         break;
 
     case 'delete' :
         $continent=Continent::findById($_GET['num']);
         $nb=Continent::delete($continent);
         if($nb==1){
-            $_SESSION['message'] = ["success" => "Le continent a bien été supprimé"];
+            $_SESSION['message'] = ["success" => "La nationalité a bien été supprimée"];
         }else{
-            $_SESSION['message'] = ["warning" => "Le continent n'a pas été supprimé"];
+            $_SESSION['message'] = ["warning" => "La nationalité n'a pas été supprimée"];
     
         }
-        header('location: index.php?uc=continents&action=list');
+        header('location: index.php?uc=nationalites&action=list');
         exit();
         break;
 
@@ -43,12 +43,12 @@ switch($action){
             $message='modifié';
         }
         if($nb==1){
-            $_SESSION['message'] = ["success" => "Le continent a bien été $message"];
+            $_SESSION['message'] = ["success" => "La nationalité a bien été $message"];
         }else{
-            $_SESSION['message'] = ["warning" => "Le continent n'a pas été $message"];
+            $_SESSION['message'] = ["warning" => "La nationalité n'a pas été $message"];
 
         }
-        header('location: index.php?uc=continents&action=list');
+        header('location: index.php?uc=nationalites&action=list');
         exit();
         break;
 

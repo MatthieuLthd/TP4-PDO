@@ -95,7 +95,7 @@ class Nationalite{
      */
     public static function findAll() : array
     {
-        $req=MonPdo::getInstance()->prepare("select n.num as numero, n.libelle as 'libNation', c.libelle as 'libContinent'  from nationalite n, continent c where n.numContinent=c.num");
+        $req=MonPdo::getInstance()->prepare("Select * from nationalite");
         $req->setFetchMode(PDO::FETCH_OBJ);
         $req->execute();
         $lesResultats=$req->fetchAll();
