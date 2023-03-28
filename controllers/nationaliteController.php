@@ -2,7 +2,7 @@
 $action=$_GET['action'];
 switch($action){
     case 'list' :
-        $lesNationalites=Continent::findAll();
+        $lesNationalites=Nationalite::findAll();
         include('vues/Nationalite/listeNationalite.php');
         break;
 
@@ -13,13 +13,13 @@ switch($action){
 
     case 'update' :
         $mode="Modifier";
-        $continent=Continent::findById($_GET['num']);
+        $nationalite=Nationalite::findById($_GET['num']);
         include ('vues/Nationalite/listeNationalite.php');
         break;
 
     case 'delete' :
-        $continent=Continent::findById($_GET['num']);
-        $nb=Continent::delete($continent);
+        $nationalite=Nationalite::findById($_GET['num']);
+        $nb=Nationalite::delete($nationalite);
         if($nb==1){
             $_SESSION['message'] = ["success" => "La nationalité a bien été supprimée"];
         }else{
@@ -31,15 +31,15 @@ switch($action){
         break;
 
     case 'valideForm' :
-        $continent = new Continent();
+        $nationalite = new Nationalite();
         if(empty($_POST['num'])){ // cas d'une création 
-            $continent->setLibelle($_POST['libelle']);
-            $nb=Continent::add($continent);
+            $nationalite->setLibelle($_POST['libelle']);
+            $nb=Nationalite::add($nationalite);
             $message='ajouté';
         }else{ // cas d'une modif 
-            $continent->setNum($_POST['num']);
-            $continent->setLibelle($_POST['libelle']);
-            $nb=Continent::update($continent);
+            $nationalite->setNumNationalite($_POST['num']);
+            $nationalite->setLibelle($_POST['libelle']);
+            $nb=Nationalite::update($nationalite);
             $message='modifié';
         }
         if($nb==1){

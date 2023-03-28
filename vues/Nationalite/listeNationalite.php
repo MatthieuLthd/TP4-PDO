@@ -2,7 +2,7 @@
 
     <div class="row pt-3">
             <div class="col-9"><h2>Listes des nationalités</h2></div>
-            <div class="col-3"><a href="index.php?uc=nationalites&action=add" class="btn btn-succes"><i class="fas fa-plus-circle"></i>Créer un continent</a></div>
+            <div class="col-3"><a href="index.php?uc=nationalites&action=add" class="btn btn-succes"><i class="fas fa-plus-circle"></i>Créer une nationalité</a></div>
         
     </div>
 
@@ -17,6 +17,7 @@
     <tbody>
         <?php
         foreach($lesNationalites as $nationalite){
+            var_dump($nationalite);
             echo "<tr class='d-flex'>";
             echo "<td class='col-md-2' >".$nationalite->getNum()."</td>";
             echo "<td class='col-md-8' >".$nationalite->getLibelle()."</td>";
