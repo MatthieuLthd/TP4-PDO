@@ -30,8 +30,13 @@ class Nationalite{
 /**------------------------ACESSEURS------------------------------- */
 
 
-    
-
+    /**
+     * Get the value of num
+     */
+    public function getNum()
+    {
+        return $this->num;
+    }
 
     /**
      * Lit le libelle
@@ -60,7 +65,7 @@ class Nationalite{
      *
      * @return Nationalite
      */
-    public function getNum() : Nationalite
+    public function getNumNationalite() : Nationalite
     {
         return Nationalite::findById($this->numNationalite);
     }
@@ -123,7 +128,7 @@ class Nationalite{
     {
         $req=MonPdo::getInstance()->prepare("insert into nationalite(libelle, numNationalite) values(:libelle, :numNationalite)");
         $req->bindParam(':libelle', $nationalite->getLibelle());
-        $req->bindParam(':numNationalite', $nationalite->getNum()->getNum());
+        $req->bindParam(':numNationalite', $nationalite->getNumNationalite()->getNum());
         $nb=$req->execute();
         return $nb;
     }
@@ -140,7 +145,7 @@ class Nationalite{
         $req=MonPdo::getInstance()->prepare("Update nationalite set libelle= :libelle, numNationalite= :numNationalite where num= :id");
         $req->bindParam(':id', $nationalite->getNum());
         $req->bindParam(':libelle', $nationalite->getLibelle());
-        $req->bindParam(':numNationalite', $nationalite->getNum()->getNum());
+        $req->bindParam(':numNationalite', $nationalite->getNumNationalite()->getNum());
         $nb=$req->execute();
         return $nb;
     }
@@ -160,6 +165,8 @@ class Nationalite{
         return $nb;
     }
 
+
+    
 }
 
 
