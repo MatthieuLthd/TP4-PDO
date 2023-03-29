@@ -2,19 +2,27 @@
 $action=$_GET['action'];
 switch($action){
     case 'list' :
-        $lesNationalites=Nationalite::findAll();
+        // traitement form de recherche
+        $libelle="";
+        $continentSel="Tous";
+        if(!empty($_POST["libelle"]) || !empty($_POST["continent"])){
+            $libelle = $_POST["libelle"];
+            $continentSel = $_POST["continent"];
+        }
+        $lesContinents = Continent::findAll();
+        $lesNationalites=Nationalite::findAll($libelle, $continentSel);
         include('vues/Nationalite/listeNationalite.php');
         break;
 
     case 'add' :
         $mode="Ajouter";
-        include ('vues/Nationalite/listeNationalite.php');
+        include ('vues/Nationalite/formNationalite.php');
         break;
 
     case 'update' :
         $mode="Modifier";
         $nationalite=Nationalite::findById($_GET['num']);
-        include ('vues/Nationalite/listeNationalite.php');
+        include ('vues/Nationalite/formNationalite.php');
         break;
 
     case 'delete' :
@@ -36,6 +44,7 @@ switch($action){
             $nationalite->setLibelle($_POST['libelle']);
             $nb=Nationalite::add($nationalite);
             $message='ajouté';
+            var_dump($nationalite);
         }else{ // cas d'une modif 
             $nationalite->setNumNationalite($_POST['num']);
             $nationalite->setLibelle($_POST['libelle']);
