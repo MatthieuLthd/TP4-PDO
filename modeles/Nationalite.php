@@ -94,7 +94,7 @@ class Nationalite{
      */
     public static function findAll(?string $libelle="", ?string $continent="Tous") : array
     {
-        $texteReq="select n.num, n.libelle as 'libNation', c.libelle as 'libContinent'  from nationalite n, continent c where n.numContinent=c.num";
+        $texteReq="select n.num as numero, n.libelle as 'libNation', c.libelle as 'libContinent' from nationalite n, continent c where n.numContinent=c.num";
         if($libelle != "") {
             $texteReq.= " and n.libelle like '%".$libelle."%'";
         }
@@ -126,21 +126,7 @@ class Nationalite{
     }
 
 
-    /**
-     * Permet d'ajouter une Nationalite
-     *
-     * @param Nationalite $nationalite nationalite à ajouter
-     * @return integer resultat(1 si l'opération a réussi, 0 sinon)
-     */
-    public static function add(Nationalite $nationalite) : int
-    {
-        $req=MonPdo::getInstance()->prepare("INSERT INTO nationalite(libelle, numContinent) VALUES(:libelle, :continent)");
-        $lib = $nationalite->getLibelle();
-        $req->bindParam(':libelle', $lib);
-        $req->bindParam(':continent', $continent);
-        $nb=$req->execute();
-        return $nb;
-    }
+
 
 
     /**

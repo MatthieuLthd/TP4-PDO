@@ -2,10 +2,12 @@
 
     <div class="row pt-3">
             <div class="col-9"><h2>Listes des nationalités</h2></div>
-            <div class="col-3"><a href="index.php?uc=nationalites&action=add" class="btn btn-succes"><i class="fas fa-plus-circle"></i>Créer une nationalité</a></div>
+            <div class="col-3"><a href="formNationalite.php?action=Ajouter" class="btn btn-succes"><i class="fas fa-plus-circle"></i>Créer une nationalité</a></div>
         
     </div>
-    <form action="index.php?uc=nationalites&action=list" method="post" class="border border-primary rounded p-3 mt-3 mb-3">
+
+
+    <form id="formRecherche" action="index.php?uc=nationalites&action=list" method="post" class="border border-primary rounded p-3 mt-3 mb-3">
         <div class="row">
             <div class="col">
                 <input type="text" class='form-control' id="libelle" placehoder="Saisir le libellé" name="libelle" value="<?php echo $libelle; ?>">
@@ -27,6 +29,7 @@
         </div>
     </form>
 
+
     <table class="table table-striped">
     <thead>
         <tr class="d-flex">
@@ -40,12 +43,12 @@
         <?php
         foreach($lesNationalites as $nationalite){
             echo "<tr class='d-flex'>";
-            echo "<td class='col-md-2' >".$nationalite->num."</td>";
-            echo "<td class='col-md-4' >".$nationalite->libelle."</td>";
+            echo "<td class='col-md-2' >$nationalite->num</td>";
+            echo "<td class='col-md-4' >$nationalite->libNation</td>";
             echo "<td class='col-md-4' >$nationalite->libContinent</td>";
             echo "<td class='col-md-2'>
-                <a href='index.php?uc=nationalites&action=update&num=".$nationalite->num."' class='btn btn-info'><i class='fas fa-pen'></i></a>
-                <a href='#modalSuppr' data-toggle='modal' data-message='Etes-vous sûr de vouloir supprimer cette nationalité ?' data-Suppr='index.php?uc=nationalites&action=delete&num=".$nationalite->num."' class ='btn btn-warning'><i class ='far fa-trash-alt'></i></a>
+                <a href='formNationalite.php?action=Modifier&num=$nationalite->num' class='btn btn-info'><i class='fas fa-pen'></i></a>
+                <a href='#modalSuppr' data-toggle='modal' data-message='Etes-vous sûr de vouloir supprimer cette nationalité ?' data-Suppr='supprNationalite.php?num=$nationalite->num' class ='btn btn-warning'><i class ='far fa-trash-alt'></i></a>
             </td>";
             echo "</tr>";
         }

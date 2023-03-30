@@ -2,16 +2,8 @@
 $action=$_GET['action'];
 switch($action){
     case 'list' :
-        // traitement form de recherche
-        $libelle="";
-        $continentSel="Tous";
-        if(!empty($_POST["libelle"]) || !empty($_POST["continent"])){
-            $libelle = $_POST["libelle"];
-            $continentSel = $_POST["continent"];
-        }
-        $lesContinents = Continent::findAll();
-        $lesNationalites=Nationalite::findAll($libelle, $continentSel);
-        include('vues/Nationalite/listeNationalite.php');
+        $lesNationalites=Nationalite::findAll();
+        include('vues/Nationalite/listeNationalites.php');
         break;
 
     case 'add' :
@@ -29,9 +21,9 @@ switch($action){
         $nationalite=Nationalite::findById($_GET['num']);
         $nb=Nationalite::delete($nationalite);
         if($nb==1){
-            $_SESSION['message'] = ["success" => "La nationalité a bien été supprimée"];
+            $_SESSION['message'] = ["success" => "Le nationalite a bien été supprimé"];
         }else{
-            $_SESSION['message'] = ["warning" => "La nationalité n'a pas été supprimée"];
+            $_SESSION['message'] = ["warning" => "Le nationalite n'a pas été supprimé"];
     
         }
         header('location: index.php?uc=nationalites&action=list');
@@ -44,17 +36,16 @@ switch($action){
             $nationalite->setLibelle($_POST['libelle']);
             $nb=Nationalite::add($nationalite);
             $message='ajouté';
-            var_dump($nationalite);
         }else{ // cas d'une modif 
-            $nationalite->setNumNationalite($_POST['num']);
+            $nationalite->setNum($_POST['num']);
             $nationalite->setLibelle($_POST['libelle']);
             $nb=Nationalite::update($nationalite);
             $message='modifié';
         }
         if($nb==1){
-            $_SESSION['message'] = ["success" => "La nationalité a bien été $message"];
+            $_SESSION['message'] = ["success" => "Le nationalite a bien été $message"];
         }else{
-            $_SESSION['message'] = ["warning" => "La nationalité n'a pas été $message"];
+            $_SESSION['message'] = ["warning" => "Le nationalite n'a pas été $message"];
 
         }
         header('location: index.php?uc=nationalites&action=list');

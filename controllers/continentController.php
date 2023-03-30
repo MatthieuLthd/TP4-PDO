@@ -28,7 +28,6 @@ switch($action){
         }
         header('location: index.php?uc=continents&action=list');
         exit();
-        break;
 
     case 'valideForm' :
         $continent = new Continent();
@@ -50,7 +49,6 @@ switch($action){
         }
         header('location: index.php?uc=continents&action=list');
         exit();
-        break;
 
 }
 
