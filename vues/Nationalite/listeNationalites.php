@@ -17,8 +17,8 @@
                         <?php
                         echo "<option value='Tous'>Tous les continents</option>";
                         foreach($lesContinents as $continent){
-                            $selection=$continent->num == $continentSel ? 'selected' : '';
-                            echo "<option value='$continent->num' $selection>$continent->libelle</option>";
+                            $selection=$continent->getNum() == $continentSel ? 'selected' : '';
+                            echo "<option value=".$continent->getNum()."'". $selection.">".$continent->getLibelle()."</option>";
                         }
                         ?>
                 </select>
@@ -43,12 +43,12 @@
         <?php
         foreach($lesNationalites as $nationalite){
             echo "<tr class='d-flex'>";
-            echo "<td class='col-md-2' >$nationalite->num</td>";
+            echo "<td class='col-md-2' >$nationalite->numero</td>";
             echo "<td class='col-md-4' >$nationalite->libNation</td>";
             echo "<td class='col-md-4' >$nationalite->libContinent</td>";
             echo "<td class='col-md-2'>
-                <a href='formNationalite.php?action=Modifier&num=$nationalite->num' class='btn btn-info'><i class='fas fa-pen'></i></a>
-                <a href='#modalSuppr' data-toggle='modal' data-message='Etes-vous sûr de vouloir supprimer cette nationalité ?' data-Suppr='supprNationalite.php?num=$nationalite->num' class ='btn btn-warning'><i class ='far fa-trash-alt'></i></a>
+                <a href='formNationalite.php?action=Modifier&num=$nationalite->numero' class='btn btn-info'><i class='fas fa-pen'></i></a>
+                <a href='#modalSuppr' data-toggle='modal' data-message='Etes-vous sûr de vouloir supprimer cette nationalité ?' data-Suppr='supprNationalite.php?num=$nationalite->numero' class ='btn btn-warning'><i class ='far fa-trash-alt'></i></a>
             </td>";
             echo "</tr>";
         }

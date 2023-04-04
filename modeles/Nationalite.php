@@ -61,24 +61,24 @@ class Nationalite{
 
     
     /**
-     * renvoie l'objet nationalite associé
+     * renvoie l'objet continent associé
      *
-     * @return Nationalite
+     * @return Continent
      */
-    public function getNumNationalite() : Nationalite
+    public function getContinent() : Continent
     {
-        return Nationalite::findById($this->numNationalite);
+        return Continent::findById($this->numContinent);
     }
 
     /**
-     * ecris 
+     * ecris le num continent
      *
-     * @param Nationalite $nationalite
+     * @param Continent $continent
      * @return self
      */
-    public function setNumNationalite(Nationalite $nationalite) : self
+    public function setContinent(Continent $continent) : self
     {
-        $this->numNationalite = $nationalite->getNum();
+        $this->numContinent = $continent->getNum();
 
         return $this;
     }
@@ -96,12 +96,12 @@ class Nationalite{
     {
         $texteReq="select n.num as numero, n.libelle as 'libNation', c.libelle as 'libContinent' from nationalite n, continent c where n.numContinent=c.num";
         if($libelle != "") {
-            $texteReq.= " and n.libelle like '%".$libelle."%'";
+            $texteReq .= " and n.libelle like '%".$libelle."%'";
         }
         if($continent != "Tous") { 
-            $texteReq.= " and c.num =".$continent;
+            $texteReq .= " and c.num =".$continent;
         }
-        $texteReq .= "order by n.libelle";
+        $texteReq .= " order by n.libelle";
         $req=MonPdo::getInstance()->prepare($texteReq);
         $req->setFetchMode(PDO::FETCH_OBJ);
         $req->execute();
