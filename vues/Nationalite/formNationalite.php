@@ -1,26 +1,28 @@
 <div class="container mt-5">
-<h2 class="pt-3 text-center"><?php echo $action?> une Nationalité</h2>
-    <form action="index.php?uc=nationalites&action=ValiderForm>" method="post" class="col-md-6 offset-md-3 border border-primary p-3 rounded">
+<h2 class="pt-3 text-center"><?php echo $mode?> une Nationalité</h2>
+    <form action="index.php?uc=nationalites&action=validerForm" method="post" class="col-md-6 offset-md-3 border border-primary p-3 rounded">
         <div class="form-group">
             <label for="libelle" > Libellé </label>
-            <input type="text" class='form-control' id="libelle" placehoder="Saisir le libellé" name="libelle" value="<?php if($action == "Modifier"){echo $laNationalite->getLibelle();} ?>">
+            <input type="text" class='form-control' id="libelle" placehoder="Saisir le libellé" name="libelle" value="<?php if($mode == "Modifier"){echo $laNationalite->getLibelle();} ?>">
         </div>
         <div class="form-group">
-            <label for="Continent" > Libellé </label>
+            <label for="Continent" > Continent </label>
             <select name="continent" class='form-control'>
                 <?php
                 foreach($lesContinents as $continent){
-                    $selection=$continent->getNum() == $laNationalite->getContinent()->getNum() ? 'selected' : '';
+                    if($mode=="Modifier"){
+                        $selection=$continent->getNum() == $laNationalite->getContinent()->getNum() ? 'selected' : '';
+                    } 
                     echo "<option value='".$continent->getNum()."'". $selection.">".$continent->getLibelle()."</option>";
                 }
                 ?>
                 
             </select>
         </div>
-        <input type="hidden" id="num" name="num" value="<?php if($action == "Modifier"){echo $laNationalite->getNum();} ?>">
+        <input type="hidden" id="num" name="num" value="<?php if($mode == "Modifier"){echo $laNationalite->getNum();} ?>">
         <div class="row">
             <div class="col"> <a href="index.php?uc=nationalites&action=list" class="btn btn-warning btn-block">Revenir à la liste</a> </div>
-            <div class="col"><button type="submit" class="btn btn-success btn-block"> <?php echo $action?> </button> </div>
+            <div class="col"><button type="submit" class="btn btn-success btn-block"> <?php echo $mode?> </button> </div>
         </div>
     </form> 
 </div>

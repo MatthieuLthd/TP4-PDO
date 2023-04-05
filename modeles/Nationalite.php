@@ -20,12 +20,11 @@ class Nationalite{
 
 
     /**
-     * num nationalite (clé étrangère) relié à num de Nationalite
+     * Num du continent
      *
      * @var int
      */
-    private $numNationalite;
-
+    private $numContinent;
 
 /**------------------------ACESSEURS------------------------------- */
 
@@ -37,6 +36,20 @@ class Nationalite{
     {
         return $this->num;
     }
+
+
+
+
+    /**
+     * Set the value of num
+     */
+    public function setNum($num): self
+    {
+        $this->num = $num;
+
+        return $this;
+    }
+
 
     /**
      * Lit le libelle
@@ -129,6 +142,25 @@ class Nationalite{
 
 
 
+
+    /**
+     * Permet d'ajouter une nationalite
+     *
+     * @param Nationalite $nationalite nationalite à ajouter
+     * @return integer resultat(1 si l'opération a réussi, 0 sinon)
+     */
+    public static function add(Nationalite $nationalite) : int
+    {
+        $req=MonPdo::getInstance()->prepare("INSERT INTO nationalite(libelle, numContinent) VALUES(:libelle, :continent)");
+        $libelle = $nationalite->getLibelle();
+        $continent = $nationalite->numContinent;
+        $req->bindParam(':libelle', $libelle);
+        $req->bindParam(':continent', $continent);
+        $nb=$req->execute();
+        return $nb;
+    }
+
+
     /**
      * Permet de modifier un nationalite 
      *
@@ -138,9 +170,12 @@ class Nationalite{
     public static function update(Nationalite $nationalite) : int
     {
         $req=MonPdo::getInstance()->prepare("Update nationalite set libelle= :libelle, numNationalite= :numNationalite where num= :id");
-        $req->bindParam(':id', $nationalite->getNum());
-        $req->bindParam(':libelle', $nationalite->getLibelle());
-        $req->bindParam(':numNationalite', $nationalite->getNumNationalite()->getNum());
+        $nationalite = $nationalite->getNum();
+        $libelle = $nationalite->getLibelle();
+        $num = $nationalite->getNum();
+        $req->bindParam(':id', $nationalite);
+        $req->bindParam(':libelle', $libelle);
+        $req->bindParam(':numNationalite', $num);
         $nb=$req->execute();
         return $nb;
     }
@@ -159,6 +194,9 @@ class Nationalite{
         $nb=$req->execute();
         return $nb;
     }
+
+
+    
 
 
     
