@@ -13,8 +13,7 @@
 
     
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://bootswatch.com/4/solar/bootstrap.css">
+    
 
 
     <!-- Favicons -->
@@ -50,6 +49,8 @@
     <link href="jumbotron.css" rel="stylesheet">
     <!-- FontAwesome CSS -->
     <link rel="stylesheet" href="https://kit.fontawesome.com/60736465e2.css" crossorigin="anonymous">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="style.css">
   </head>
 
   <body>

@@ -139,10 +139,6 @@ class Nationalite{
     }
 
 
-
-
-
-
     /**
      * Permet d'ajouter une nationalite
      *
@@ -169,13 +165,13 @@ class Nationalite{
      */
     public static function update(Nationalite $nationalite) : int
     {
-        $req=MonPdo::getInstance()->prepare("Update nationalite set libelle= :libelle, numNationalite= :numNationalite where num= :id");
-        $nationalite = $nationalite->getNum();
+        $req=MonPdo::getInstance()->prepare("Update nationalite set libelle= :libelle , numContinent= :numContinent where num= :id");
+        $nat = $nationalite->getNum();
         $libelle = $nationalite->getLibelle();
-        $num = $nationalite->getNum();
-        $req->bindParam(':id', $nationalite);
+        $num = $nationalite->getContinent()->getNum();
+        $req->bindParam(':id', $nat);
         $req->bindParam(':libelle', $libelle);
-        $req->bindParam(':numNationalite', $num);
+        $req->bindParam(':numContinent', $num);
         $nb=$req->execute();
         return $nb;
     }

@@ -18,7 +18,7 @@
                         echo "<option value='Tous'>Tous les continents</option>";
                         foreach($lesContinents as $continent){
                             $selection=$continent->getNum() == $continentSel ? 'selected' : '';
-                            echo "<option value=".$continent->getNum()."'". $selection.">".$continent->getLibelle()."</option>";
+                            echo "<option value='".$continent->getNum()."'". $selection.">".$continent->getLibelle()."</option>";
                         }
                         ?>
                 </select>

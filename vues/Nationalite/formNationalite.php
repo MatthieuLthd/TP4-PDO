@@ -10,9 +10,11 @@
             <select name="continent" class='form-control'>
                 <?php
                 foreach($lesContinents as $continent){
+                    $selection="";
                     if($mode=="Modifier"){
                         $selection=$continent->getNum() == $laNationalite->getContinent()->getNum() ? 'selected' : '';
                     } 
+                    
                     echo "<option value='".$continent->getNum()."'". $selection.">".$continent->getLibelle()."</option>";
                 }
                 ?>

@@ -42,7 +42,6 @@ switch($action){
 
     case 'validerForm' :
         $nationalite = new Nationalite();
-        var_dump($_POST);
         $continent=Continent::findById($_POST['continent']);
         if(empty($_POST['num'])){ // cas d'une création 
             $nationalite->setLibelle($_POST['libelle'])
@@ -51,7 +50,8 @@ switch($action){
             $message='ajouté';
         }else{ // cas d'une modif 
             $nationalite->setNum($_POST['num'])
-                        ->setLibelle($_POST['libelle']);
+                        ->setLibelle($_POST['libelle'])
+                        ->setContinent($continent);
             $nb=Nationalite::update($nationalite);
             $message='modifié';
         }
