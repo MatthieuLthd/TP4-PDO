@@ -37,9 +37,6 @@ class Nationalite{
         return $this->num;
     }
 
-
-
-
     /**
      * Set the value of num
      */

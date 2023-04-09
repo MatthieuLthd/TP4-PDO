@@ -11,8 +11,9 @@ switch($action){
             $prenom= $_POST['prenom'];
             $nationaliteSel= $_POST['nationalite'];
         }
+        $lesNationalites=Nationalite::findAll();
         $lesAuteurs=Auteur::findAll();
-        $lesAuteurs=Auteur::findAll($nom, $nationaliteSel);        
+        $lesAuteurs=Auteur::findAll($nom, $prenom, $nationaliteSel);        
         include('vues/Auteur/listeAuteurs.php');
         break;
 
@@ -46,8 +47,9 @@ switch($action){
         $auteur = new Auteur();
         $auteur=Auteur::findById($_POST['auteur']);
         if(empty($_POST['num'])){ // cas d'une création 
-            $auteur->setLibelle($_POST['libelle'])
-                        ->setNationalite($auteur);
+            $auteur->setNom($_POST['nom'])
+                    ->setPrenom($_POST['prenom'])
+                    ->setNationalite($auteur);
             $nb=Auteur::add($auteur);
             $message='ajouté';
         }else{ // cas d'une modif 

@@ -18,10 +18,11 @@
             <div class="col">
                 <select name="nationalite" class='form-control'>
                         <?php
-                        echo "<option value='Tous'>Tous les nationalites</option>";
+                        echo "<option value='Tous'>Toutes les nationalites</option>";
+                        var_dump($lesNationalites);
                         foreach($lesNationalites as $nationalite){
-                            $selection=$nationalite->getNum() == $nationaliteSel ? 'selected' : '';
-                            echo "<option value='".$nationalite->getNum()."'". $selection.">".$nationalite->getLibelle()."</option>";
+                            $selection=$nationalite->numero == $nationaliteSel ? 'selected' : '';
+                            echo "<option value='".$nationalite->libNation."'". $selection.">".$nationalite->libNation."</option>";
                         }
                         ?>
                 </select>
@@ -50,7 +51,7 @@
             echo "<td class='col-md-2' >$auteur->numero</td>";
             echo "<td class='col-md-3' >$auteur->nomA</td>";
             echo "<td class='col-md-3' >$auteur->prenomA</td>";
-            echo "<td class='col-md-3' >$auteur->numNat</td>";
+            echo "<td class='col-md-3' >$auteur->libNat</td>";
             echo "<td class='col-md-2'>
                 <a href='index.php?uc=auteurs&action=update&num=".$auteur->numero."' class='btn btn-info'><i class='fas fa-pen'></i></a>
                 <a href='#modalSuppr' data-toggle='modal' data-message='Etes-vous sûr de vouloir supprimer cette nationalité ?' data-Suppr='index.php?uc=auteurs&action=delete&num=".$auteur->numero."' class ='btn btn-warning'><i class ='far fa-trash-alt'></i></a>

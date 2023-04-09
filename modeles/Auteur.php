@@ -93,9 +93,9 @@ class Auteur{
     /**
      * renvoie l'objet Nationalite associé
      *
-     * @return Continent
+     * @return Nationalite
      */
-    public function getContinent() : Nationalite
+    public function getNationalite() : Nationalite
     {
         return Nationalite::findById($this->numNationalite);
     }
@@ -121,14 +121,17 @@ class Auteur{
      *
      * @return Auteur[] tableau d'objets Auteur
      */
-    public static function findAll(?string $nom="", ?string $nationalite="Tous") : array
+    public static function findAll(?string $nom="",?string $prenom="", ?string $nationalite="Tous") : array
     {
-        $texteReq="select a.num as numero, a.nom as 'nomA', a.prenom as 'prenomA', a.numNationalite as 'numNat' from auteur a, nationalite n where a.numNationalite=n.num";
+        $texteReq="select a.num as numero, a.nom as 'nomA', a.prenom as 'prenomA', n.libelle as 'libNat' from auteur a, nationalite n where a.numNationalite=n.num";
         if($nom != "") {
             $texteReq .= " and a.nom like '%".$nom."%'";
         }
+        if($prenom != "") {
+            $texteReq .= " and a.prenom like '%".$prenom."%'";
+        }
         if($nationalite != "Tous") { 
-            $texteReq .= " and n.num =".$nationalite;
+            $texteReq .= " and n.libelle=".$nationalite;
         }
         $texteReq .= " order by a.nom";
         $req=MonPdo::getInstance()->prepare($texteReq);
