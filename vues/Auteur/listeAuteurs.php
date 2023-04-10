@@ -16,13 +16,13 @@
                 <input type="text" class='form-control' id="prenom" placehoder="Saisir le prenom" name="prenom" value="<?php echo $prenom; ?>">
             </div>
             <div class="col">
-                <select name="nationalite" class='form-control'>
+                <select name="auteur" class='form-control'>
                         <?php
-                        echo "<option value='Tous'>Toutes les nationalites</option>";
-                        var_dump($lesNationalites);
-                        foreach($lesNationalites as $nationalite){
-                            $selection=$nationalite->numero == $nationaliteSel ? 'selected' : '';
-                            echo "<option value='".$nationalite->libNation."'". $selection.">".$nationalite->libNation."</option>";
+                        echo "<option value='Tous'>Toutes les auteurs</option>";
+                        var_dump($lesAuteurs);
+                        foreach($lesAuteurs as $auteur){
+                            $selection=$auteur->numero == $auteurSel ? 'selected' : '';
+                            echo "<option value='".$auteur->libNat."'". $selection.">".$auteur->libNat."</option>";
                         }
                         ?>
                 </select>

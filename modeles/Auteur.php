@@ -121,9 +121,9 @@ class Auteur{
      *
      * @return Auteur[] tableau d'objets Auteur
      */
-    public static function findAll(?string $nom="",?string $prenom="", ?string $nationalite="Tous") : array
+    public static function findAll(?string $nom="",?string $prenom="", ?string $nationalite="Tous", ?string $numNat="Tous") : array
     {
-        $texteReq="select a.num as numero, a.nom as 'nomA', a.prenom as 'prenomA', n.libelle as 'libNat' from auteur a, nationalite n where a.numNationalite=n.num";
+        $texteReq="select a.num as numero, a.nom as 'nomA', a.prenom as 'prenomA', n.libelle as 'libNat', a.numNationalite as 'numNat' from auteur a, nationalite n where a.numNationalite=n.num";
         if($nom != "") {
             $texteReq .= " and a.nom like '%".$nom."%'";
         }
