@@ -21,6 +21,7 @@
                     
                     echo "<option value='".$auteur->numNat."'". $selection.">".$auteur->libNat."</option>";
                 }
+                
                 ?>
                 
             </select>

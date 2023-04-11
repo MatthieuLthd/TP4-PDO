@@ -6,11 +6,16 @@ switch($action){
         $nom="";
         $prenom="";
         $nationaliteSel="Tous";
-        if(!empty($_POST['nom']) || !empty($_POST['nationalite'])){
+        if(!empty($_POST['nom'])){
             $nom= $_POST['nom'];
-            $prenom= $_POST['prenom'];
+        }
+        if(!empty($_POST['nationalite'])){
             $nationaliteSel= $_POST['nationalite'];
         }
+        if($prenom= $_POST['prenom']){
+            $prenom= $_POST['prenom'];
+        }
+  
         $lesNationalites=Nationalite::findAll();
         $lesAuteurs=Auteur::findAll();
         $lesAuteurs=Auteur::findAll($nom, $prenom, $nationaliteSel);        

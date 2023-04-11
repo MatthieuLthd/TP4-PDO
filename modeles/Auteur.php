@@ -131,7 +131,7 @@ class Auteur{
             $texteReq .= " and a.prenom like '%".$prenom."%'";
         }
         if($nationalite != "Tous") { 
-            $texteReq .= " and n.libelle=".$nationalite;
+            $texteReq .= " and n.libelle='".$nationalite."'";
         }
         $texteReq .= " order by a.nom";
         $req=MonPdo::getInstance()->prepare($texteReq);
