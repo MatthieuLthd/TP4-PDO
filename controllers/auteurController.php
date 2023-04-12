@@ -12,12 +12,12 @@ switch($action){
         if(!empty($_POST['nationalite'])){
             $nationaliteSel= $_POST['nationalite'];
         }
-        if($prenom= $_POST['prenom']){
+        if(!empty($_POST['prenom'])){
             $prenom= $_POST['prenom'];
         }
   
         $lesNationalites=Nationalite::findAll();
-        $lesAuteurs=Auteur::findAll();
+
         $lesAuteurs=Auteur::findAll($nom, $prenom, $nationaliteSel);        
         include('vues/Auteur/listeAuteurs.php');
         break;
@@ -50,11 +50,11 @@ switch($action){
 
     case 'validerForm' :
         $auteur = new Auteur();
-        $auteur=Auteur::findById($_POST['auteur']);
+        $nationalite=Nationalite::findById($_POST['nationalite']);
         if(empty($_POST['num'])){ // cas d'une création 
             $auteur->setNom($_POST['nom'])
-                    ->setPrenom($_POST['prenom'])
-                    ->setNationalite($auteur);
+                    ->setPrenom($_POST['Prenom'])
+                    ->setNationalite($_POST['nationalite']);
             $nb=Auteur::add($auteur);
             $message='ajouté';
         }else{ // cas d'une modif 

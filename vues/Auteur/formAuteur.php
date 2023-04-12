@@ -3,11 +3,11 @@
     <form action="index.php?uc=auteurs&action=validerForm" method="post" class="col-md-6 offset-md-3 border border-primary p-3 rounded">
         <div class="form-group">
             <label for="nom" > Nom </label>
-            <input type="text" class='form-control' id="nom" placehoder="Saisir le libellé" name="nom" value="<?php if($mode == "Modifier"){echo $laAuteur->getLibelle();} ?>">
+            <input type="text" class='form-control' id="nom" placehoder="Saisir le libellé" name="nom" value="<?php if($mode == "Modifier"){echo $laAuteur->getNom();} ?>">
         </div>
         <div>
             <label for="nom" > Prenom </label>
-            <input type="text" class='form-control' id="Prenom" placehoder="Saisir le libellé" name="Prenom" value="<?php if($mode == "Modifier"){echo $laAuteur->getLibelle();} ?>">
+            <input type="text" class='form-control' id="Prenom" placehoder="Saisir le libellé" name="Prenom" value="<?php if($mode == "Modifier"){echo $laAuteur->getPrenom();} ?>">
         </div>
         <div class="form-group">
             <label for="Nationalite" > Nationalite </label>
