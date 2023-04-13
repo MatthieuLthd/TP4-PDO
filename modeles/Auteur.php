@@ -121,7 +121,7 @@ class Auteur{
      *
      * @return Auteur[] tableau d'objets Auteur
      */
-    public static function findAll(?string $nom="",?string $prenom="", ?string $nationalite="Tous", ?string $numNat="Tous") : array
+    public static function findAll(?string $nom="",?string $prenom="", ?string $nationalite="Tous") : array
     {
         $texteReq="select a.num as numero, a.nom as 'nomA', a.prenom as 'prenomA', n.libelle as 'libNat', a.numNationalite as 'numNat' from auteur a, nationalite n where a.numNationalite=n.num";
         if($nom != "") {
@@ -131,7 +131,7 @@ class Auteur{
             $texteReq .= " and a.prenom like '%".$prenom."%'";
         }
         if($nationalite != "Tous") { 
-            $texteReq .= " and n.libelle='".$nationalite."'";
+            $texteReq .= " and n.num='".$nationalite."'";
         }
         $texteReq .= " order by a.nom";
         $req=MonPdo::getInstance()->prepare($texteReq);
@@ -186,6 +186,7 @@ class Auteur{
      */
     public static function update(Auteur $auteur) : int
     {
+        var_dump($auteur);
         $req=MonPdo::getInstance()->prepare("Update auteur set nom= :nom , prenom= :prenom, numNationalite= :numNationalite where num= :id");
         $nat = $auteur->getNum();
         $nom = $auteur->getNom();
@@ -201,15 +202,15 @@ class Auteur{
 
 
     /**
-     * Permet de supprimer un nationalite 
+     * Permet de supprimer un auteur 
      *
-     * @param Auteur $nationalite nationalite à supprimer 
+     * @param Auteur $auteur auteur à supprimer 
      * @return integer resultat(1 si l'opération a réussi, 0 sinon)
      */
-    public static function delete(Auteur $nationalite) :int
+    public static function delete(Auteur $auteur) :int
     {
-        $req=MonPdo::getInstance()->prepare("Delete from nationalite where num= :id");
-        $req->bindParam(':id', $nationalite->getNum());
+        $req=MonPdo::getInstance()->prepare("Delete from auteur where num= :id");
+        $req->bindParam(':id', $auteur->getNum());
         $nb=$req->execute();
         return $nb;
     }

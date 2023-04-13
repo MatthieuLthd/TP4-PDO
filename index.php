@@ -5,7 +5,7 @@ include "vues/header.php";
 include "modeles/Continent.php";
 include "modeles/Nationalite.php";
 include "modeles/Auteur.php";
-//include "modeles/Genre.php";
+include "modeles/Genre.php";
 include "modeles/connexionPdo.php";
 include "vues/messagesFlash.php";
 

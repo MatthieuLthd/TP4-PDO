@@ -24,13 +24,13 @@ switch($action){
 
     case 'add' :
         $mode="Ajouter";
-        $lesAuteurs=Auteur::findAll();
+        $lesNationalites=Nationalite::findAll();
         include ('vues/Auteur/formAuteur.php');
         break;
 
     case 'update' :
         $mode="Modifier";
-        $lesAuteurs=Auteur::findAll();
+        $lesNationalites=Nationalite::findAll();
         $laAuteur=Auteur::findById($_GET['num']);
         include ('vues/Auteur/formAuteur.php');
         break;
@@ -54,16 +54,18 @@ switch($action){
         if(empty($_POST['num'])){ // cas d'une création 
             $auteur->setNom($_POST['nom'])
                     ->setPrenom($_POST['Prenom'])
-                    ->setNationalite($_POST['nationalite']);
+                    ->setNationalite($nationalite);
             $nb=Auteur::add($auteur);
             $message='ajouté';
         }else{ // cas d'une modif 
             $auteur->setNum($_POST['num'])
-                        ->setLibelle($_POST['libelle'])
-                        ->setNationalite($auteur);
+                        ->setNom($_POST['nom'])
+                        ->setPrenom($_POST['Prenom'])
+                        ->setNationalite($nationalite);
             $nb=Auteur::update($auteur);
             $message='modifié';
         }
+        
         if($nb==1){
             $_SESSION['message'] = ["success" => "L'auteur a bien été $message"];
         }else{

@@ -16,7 +16,7 @@
                 <input type="text" class='form-control' id="prenom" placehoder="Saisir le prenom" name="prenom" value="<?php echo $prenom; ?>">
             </div>
             <div class="col">
-                <select name="auteur" class='form-control'>
+                <select name="nationalite" class='form-control'>
                         <?php
                         echo "<option value='Tous'>Toutes les nationalites</option>";
                         foreach($lesNationalites as $nationalite){
@@ -36,7 +36,7 @@
     <table class="table table-striped">
     <thead>
         <tr class="d-flex">
-        <th scope="col" class="col-md-2">Numéro</th>
+        <th scope="col" class="col-md-1">Numéro</th>
         <th scope="col" class="col-md-3">Nom</th>
         <th scope="col" class="col-md-3">Prénom</th>
         <th scope="col" class="col-md-3">Nationalité</th>
@@ -47,7 +47,7 @@
         <?php
         foreach($lesAuteurs as $auteur){
             echo "<tr class='d-flex'>";
-            echo "<td class='col-md-2' >$auteur->numero</td>";
+            echo "<td class='col-md-1' >$auteur->numero</td>";
             echo "<td class='col-md-3' >$auteur->nomA</td>";
             echo "<td class='col-md-3' >$auteur->prenomA</td>";
             echo "<td class='col-md-3' >$auteur->libNat</td>";

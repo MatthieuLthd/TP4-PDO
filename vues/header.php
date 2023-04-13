@@ -64,10 +64,17 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-lines-leaning"></i> Gestion des genres</a>
+        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-book"></i> Gestion des livres</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="listeGenres.php">Liste des genres</a>
-          <a class="dropdown-item" href="formGenre.php?action=Ajouter">Ajouter un genre</a>
+          <a class="dropdown-item" href="index.php?uc=livres&action=list">Liste des livres</a>
+          <a class="dropdown-item" href="index.php?uc=livres&action=add">Ajouter un livre</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"> <i class="fa-duotone fa-lines-leaning"></i> Gestion des genres</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="index.php?uc=genres&action=list">Liste des genres</a>
+          <a class="dropdown-item" href="index.php?uc=genres&action=add">Ajouter un genre</a>
         </div>
       </li>
       <li class="nav-item dropdown">

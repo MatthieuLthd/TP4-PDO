@@ -11,17 +11,16 @@
         </div>
         <div class="form-group">
             <label for="Nationalite" > Nationalite </label>
-            <select name="auteur" class='form-control'>
+            <select name="nationalite" id="nationalite" class='form-control'>
                 <?php
-                foreach($lesAuteurs as $auteur){
+                foreach($lesNationalites as $nationalite){
                     $selection="";
                     if($mode=="Modifier"){
-                        $selection=$auteur->numNat == $laAuteur->getAuteur()->getNum() ? 'selected' : '';
+                        $selection=$nationalite->numero == $laAuteur->getNationalite()->getNum() ? 'selected' : '';
                     } 
                     
-                    echo "<option value='".$auteur->numNat."'". $selection.">".$auteur->libNat."</option>";
+                    echo "<option value='".$nationalite->numero."'". $selection.">".$nationalite->libNation."</option>";
                 }
-                
                 ?>
                 
             </select>
