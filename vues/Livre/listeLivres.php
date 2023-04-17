@@ -15,7 +15,6 @@
             <div class="col">
             <select name="numAuteur" class='form-control'>
                         <?php
-                        var_dump($lesLivres);
                         echo "<option value='Tous'>Tout les auteurs</option>";
                         foreach($lesAuteurs as $auteur){
                             $selection=$auteur->numero == $auteurSel ? 'selected' : '';

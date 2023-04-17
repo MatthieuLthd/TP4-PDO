@@ -16,34 +16,33 @@ switch($action){
             $genreSel= $_POST['numGenre'];
         }
 
-        //$lesLivres=Livre::findAll($titre, $auteurSel, $genreSel);
-        $lesLivres=Livre::findAll();
-
         $lesAuteurs=Auteur::findAll();        
-        $lesGenres=Genre::findAll();        
+        $lesGenres=Genre::findAll(); 
+        $lesLivres=Livre::findAll($titre, $auteurSel, $genreSel);
+     
         include('vues/Livre/listeLivres.php');
         break;
 
     case 'add' :
         $mode="Ajouter";
-        $lesNationalites=Nationalite::findAll();
-        include ('vues/Livre/formAuteur.php');
+        $lesAuteurs=Auteur::findAll();
+        $lesGenres=Genre::findAll();
+        include ('vues/Livre/formLivre.php');
         break;
 
     case 'update' :
         $mode="Modifier";
-        $lesNationalites=Nationalite::findAll();
-        $laAuteur=Auteur::findById($_GET['num']);
-        include ('vues/Livre/formAuteur.php');
+        $laLivre=Livre::findById($_GET['num']);
+        include ('vues/Livre/formLivre.php');
         break;
 
     case 'delete' :
-        $laAuteur=Auteur::findById($_GET['num']);
-        $nb=Auteur::delete($laAuteur);
+        $laLivre=Livre::findById($_GET['num']);
+        $nb=Livre::delete($laLivre);
         if($nb==1){
-            $_SESSION['message'] = ["success" => "L'auteur a bien été supprimé"];
+            $_SESSION['message'] = ["success" => "Le livre a bien été supprimé"];
         }else{
-            $_SESSION['message'] = ["warning" => "L'auteur n'a pas été supprimé"];
+            $_SESSION['message'] = ["warning" => "Le livre n'a pas été supprimé"];
     
         }
         header('location: index.php?uc=livres&action=list');
@@ -51,27 +50,38 @@ switch($action){
         break;
 
     case 'validerForm' :
-        $auteur = new Auteur();
-        $nationalite=Nationalite::findById($_POST['nationalite']);
+        $livre = new Livre();
+        $auteur=Auteur::findById($_POST['auteur']);
+        $genre=Genre::findById($_POST['genre']);
         if(empty($_POST['num'])){ // cas d'une création 
-            $auteur->setNom($_POST['nom'])
-                    ->setPrenom($_POST['Prenom'])
-                    ->setNationalite($nationalite);
-            $nb=Auteur::add($auteur);
+            $livre->setIsbn($_POST['isbn'])
+                    ->setTitre($_POST['titre'])
+                    ->setPrix($_POST['prix'])
+                    ->setEditeur($_POST['editeur'])
+                    ->setAnnee($_POST['annee'])
+                    ->setLangue($_POST['langue'])
+                    ->setNumAuteur($_POST['auteur'])
+                    ->setNumGenre($_POST['genre']);
+                    
+            $nb=Livre::add($livre);
             $message='ajouté';
         }else{ // cas d'une modif 
-            $auteur->setNum($_POST['num'])
-                        ->setNom($_POST['nom'])
-                        ->setPrenom($_POST['Prenom'])
-                        ->setNationalite($nationalite);
-            $nb=Auteur::update($auteur);
+            $livre->setNum($_POST['num'])
+                    ->setTitre($_POST['titre'])
+                    ->setPrix($_POST['prix'])
+                    ->setEditeur($_POST['editeur'])
+                    ->setAnnee($_POST['annee'])
+                    ->setLangue($_POST['langue'])
+                    ->setNumAuteur($_POST['auteur'])
+                    ->setNumGenre($_POST['genre']);
+            $nb=Livre::update($livre);
             $message='modifié';
         }
         
         if($nb==1){
-            $_SESSION['message'] = ["success" => "L'auteur a bien été $message"];
+            $_SESSION['message'] = ["success" => "Le livre a bien été $message"];
         }else{
-            $_SESSION['message'] = ["warning" => "L'auteur n'a pas été $message"];
+            $_SESSION['message'] = ["warning" => "Le livre n'a pas été $message"];
 
         }
         header('location: index.php?uc=livres&action=list');
@@ -79,5 +89,3 @@ switch($action){
         break;
 
 }
-
-?>

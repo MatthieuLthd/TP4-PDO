@@ -51,6 +51,7 @@ switch($action){
     case 'validerForm' :
         $auteur = new Auteur();
         $nationalite=Nationalite::findById($_POST['nationalite']);
+        var_dump($nationalite);
         if(empty($_POST['num'])){ // cas d'une création 
             $auteur->setNom($_POST['nom'])
                     ->setPrenom($_POST['Prenom'])

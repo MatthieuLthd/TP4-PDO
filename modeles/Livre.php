@@ -237,7 +237,7 @@ class Livre{
      *
      * @return Livre[] tableau d'objets Livre
      */
-    public static function findAll(?string $isbn="",?string $titre="", ?string $prix="" ,?string $editeur="",?string $annee="",?string $langue="",?string $numAuteur="Tous",?string $numGenre="Tous") : array
+    public static function findAll(?string $titre="",?string $numAuteur="Tous",?string $numGenre="Tous") : array
     {
         $texteReq="select l.num as numero, l.isbn as isbn, l.titre as 'titreL', l.prix as 'prixL', l.editeur as 'editeurL', l.annee as 'anneeL',
         l.langue as 'langueL', a.nom as 'numAuteurL', g.libelle as 'numGenreL' from livre l, auteur a, genre g 
