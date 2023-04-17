@@ -33,6 +33,8 @@ switch($action){
     case 'update' :
         $mode="Modifier";
         $laLivre=Livre::findById($_GET['num']);
+        $lesAuteurs=Auteur::findAll();
+        $lesGenres=Genre::findAll();
         include ('vues/Livre/formLivre.php');
         break;
 
@@ -67,6 +69,7 @@ switch($action){
             $message='ajouté';
         }else{ // cas d'une modif 
             $livre->setNum($_POST['num'])
+                    ->setIsbn($_POST['isbn'])
                     ->setTitre($_POST['titre'])
                     ->setPrix($_POST['prix'])
                     ->setEditeur($_POST['editeur'])
@@ -74,6 +77,7 @@ switch($action){
                     ->setLangue($_POST['langue'])
                     ->setNumAuteur($_POST['auteur'])
                     ->setNumGenre($_POST['genre']);
+            var_dump($livre);
             $nb=Livre::update($livre);
             $message='modifié';
         }

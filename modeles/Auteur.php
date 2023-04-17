@@ -186,7 +186,6 @@ class Auteur{
      */
     public static function update(Auteur $auteur) : int
     {
-        var_dump($auteur);
         $req=MonPdo::getInstance()->prepare("Update auteur set nom= :nom , prenom= :prenom, numNationalite= :numNationalite where num= :id");
         $nat = $auteur->getNum();
         $nom = $auteur->getNom();
