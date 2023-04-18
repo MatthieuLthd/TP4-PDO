@@ -1,0 +1,92 @@
+nav{
+    background: linear-gradient(#ec87b1, #f1a396);
+}
+
+body .jumbotron{
+    background: linear-gradient(#ec87b1, #f1a396);
+}
+
+body{
+    background: linear-gradient(#f1a396, #f7bc84 );
+}
+
+h1{
+
+    font-family: 'Akronim', cursive;
+    color: #6469a8;
+}
+
+h2{
+    font-family: 'Averia Sans Libre', cursive;
+    color: #6469a8;
+}
+
+form .col{
+    font-family: 'Averia Sans Libre', cursive;
+    color: #7b92b4;
+}
+
+a{
+
+    font-family: 'Averia Sans Libre', cursive;
+    color: #6469a8;
+}
+
+th{
+    font-size: larger;
+    font-family: 'Averia Sans Libre', cursive;
+    font-weight: bold;
+    color: #6469a8;
+}
+
+td{
+    font-family: 'Averia Sans Libre', cursive;
+    font-weight: bold;
+    color: #6469a8;
+}
+
+.btn-info{
+    background: #8786c0;
+}
+
+.btn-warning{
+    background: #b04c76;
+}
+
+.btn-success{
+    background: #9ac7da;
+}
+
+.form-control{
+    background: #9ac7da;
+}
+
+.btn-succes{
+    font-family: 'Averia Sans Libre', cursive;
+    font-weight: bold;
+    color: #6469a8;
+}
+
+#wave{
+    display:inline-block;
+    margin-right:10px;
+    height: 30%;
+    width: 30%;
+    filter: invert();
+}
+
+#titre{
+    display:inline-block;
+}
+
+#wave2{
+    display:inline-block;
+    margin-left:0px;
+    height: 30%;
+    width: 30%;
+    filter: invert();
+}
+
+.dropdown-menu{
+    background: linear-gradient(#ec87b1, #f1a396);
+}

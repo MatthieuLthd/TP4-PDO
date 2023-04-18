@@ -1,9 +1,8 @@
 <div class="container mt-5">
 <h2 class="pt-3 text-center"><?php echo $mode?> un Livre</h2>
-    <form action="index.php?uc=livres&action=validerForm" method="post" class="col-md-6 offset-md-3 border border-primary p-3 rounded">
-
+    <form action="index.php?uc=livres&action=validerForm" id="form" method="post" class="col-md-8 offset-md-2 border border-primary p-3 rounded">
         <div class="form-group">
-            <label for="isbn" > ISBN </label>
+            <label for="isbn" id="isbn" > ISBN </label>
             <input type="text" class='form-control' id="isbn" placehoder="Saisir le numéro ISBN" name="isbn" value="<?php if($mode == "Modifier"){echo $laLivre->getIsbn();} ?>">
         </div>
         <div>

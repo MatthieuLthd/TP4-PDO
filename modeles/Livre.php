@@ -314,7 +314,8 @@ class Livre{
      */
     public static function update(Livre $livre) : int
     {
-        $req=MonPdo::getInstance()->prepare("Update livre set isbn= :isbn , titre= :titre, prix= :prix, editeur= :editeur, annee= :annee, langue= :langue, numAuteur= :numAuteur, numGenre= :numGenre where num= :id");
+        $req=MonPdo::getInstance()->prepare("Update livre set isbn= :isbn, titre= :titre, prix= :prix, editeur= :editeur, annee= :annee, langue= :langue, numAuteur= :numAuteur, numGenre= :numGenre where num= :id");
+        $id = $livre->getNum();
         $isbn = $livre->getIsbn();
         $titre = $livre->getTitre();
         $prix = $livre->getPrix();
@@ -323,6 +324,7 @@ class Livre{
         $langue = $livre->getLangue();
         $numAuteur = $livre->getNumAuteur();
         $numGenre = $livre->getNumGenre();
+        $req->bindParam(':id', $id);
         $req->bindParam(':isbn', $isbn);
         $req->bindParam(':titre', $titre);
         $req->bindParam(':prix', $prix);

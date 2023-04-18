@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.101.0">
-    <title>1</title>
+    <title>Bibliothèque Matthieu LEAUTHAUD</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/jumbotron/">
 
@@ -44,18 +44,25 @@
       }
     </style>
 
-    
+      
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Akronim&family=Averia+Sans+Libre:wght@300&family=Bahiana&family=MuseoModerno:ital,wght@1,200&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+
+
     <!-- Custom styles for this template -->
     <link href="jumbotron.css" rel="stylesheet">
     <!-- FontAwesome CSS -->
     <link rel="stylesheet" href="https://kit.fontawesome.com/60736465e2.css" crossorigin="anonymous">
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="styleMoi.css">
   </head>
 
   <body>
     
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md fixed-top">
   <a class="navbar-brand" href="index.php">Ma bibliothèque</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -71,7 +78,7 @@
         </div>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"> <i class="fa-duotone fa-lines-leaning"></i> Gestion des genres</a>
+        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"> <i class="fa-solid fa-lines-leaning"></i> Gestion des genres</a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="index.php?uc=genres&action=list">Liste des genres</a>
           <a class="dropdown-item" href="index.php?uc=genres&action=add">Ajouter un genre</a>

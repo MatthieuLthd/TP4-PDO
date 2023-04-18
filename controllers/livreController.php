@@ -52,7 +52,7 @@ switch($action){
         break;
 
     case 'validerForm' :
-        $livre = new Livre();
+        $livre=new Livre();
         $auteur=Auteur::findById($_POST['auteur']);
         $genre=Genre::findById($_POST['genre']);
         if(empty($_POST['num'])){ // cas d'une création 
