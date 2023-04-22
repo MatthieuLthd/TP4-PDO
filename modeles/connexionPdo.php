@@ -10,7 +10,7 @@ class MonPdo
 private static $serveur='mysql:host=btssio.dedyn.io';
 private static $bdd='dbname=LEAUTHA_Biblio'; 
 private static $user='LEAUTHA' ; 
-private static $mdp='16/12/2004' ;
+private static $mdp='16122004' ;
 private static $monPdo;
 private static $unPdo = null;
 
